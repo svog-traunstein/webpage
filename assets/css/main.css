@@ -34,7 +34,7 @@ main{display:block}
 section{padding:clamp(3rem,6vw,5.5rem) clamp(1.2rem,4vw,4rem)}
 .eyebrow{font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-d);margin:0 0 .7rem}
 .section-head{margin-bottom:2.4rem}
-.btn{display:inline-block;padding:.8rem 1.6rem;border-radius:var(--btn-radius);font-weight:700;font-size:.97rem;border:2px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,color .2s;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.8rem 1.6rem;border-radius:var(--btn-radius);font-weight:700;font-size:.97rem;line-height:1.2;border:2px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,color .2s;text-align:center}
 .btn:hover{transform:translateY(-2px)}
 .btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-sm)}
 .btn-primary:hover{background:var(--accent-d);color:#fff;box-shadow:var(--shadow-md)}
@@ -48,12 +48,9 @@ section{padding:clamp(3rem,6vw,5.5rem) clamp(1.2rem,4vw,4rem)}
 .site-header{position:sticky;top:0;z-index:100;background:var(--header-bg);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .2s,background .2s;padding-left:clamp(1.2rem,4vw,3.5rem);padding-right:clamp(1.2rem,4vw,3.5rem)}
 .site-header.is-scrolled{box-shadow:var(--shadow-md)}
 .site-header__inner{display:flex;align-items:center;gap:1rem;max-width:1320px;margin:0 auto;padding:.7rem 0}
-.brand{display:flex;align-items:center;gap:.75rem;flex:0 1 auto;min-width:var(--brand-min,168px)}
-.brand__logo{display:inline-grid;place-items:center;background:var(--logo-bg);border-radius:50%;padding:5px;flex:0 0 auto;box-shadow:var(--shadow-sm);overflow:hidden}
-.brand__logo img{width:46px;height:46px;border-radius:50%;object-fit:cover}
-.brand__text{display:flex;flex-direction:column;line-height:1.1;min-width:0}
-.brand__text b{font-family:var(--font-head);font-size:1.05rem;color:var(--ink-strong);white-space:normal}
-.brand__text small{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.brand{display:flex;align-items:center;flex:0 0 auto}
+.brand__img{height:64px;width:auto;display:block;background:#fff;border:3px solid var(--accent);border-radius:10px;padding:3px 6px;box-shadow:var(--shadow-sm)}
+@media(max-width:480px){.brand__img{height:54px;padding:3px 5px}}
 .main-nav{margin-left:auto;flex:0 0 auto}
 .mainmenu{list-style:none;display:flex;gap:.3rem;margin:0;padding:0;align-items:center}
 .mainmenu>li{position:relative}
@@ -195,11 +192,13 @@ section{padding:clamp(3rem,6vw,5.5rem) clamp(1.2rem,4vw,4rem)}
 .cardfx-book .team-card__front{z-index:2;transform-origin:left center;transition:transform .75s cubic-bezier(.2,.7,.3,1)}
 .cardfx-book .team-card__back{z-index:1}
 .cardfx-book .team-card:hover .team-card__front,.cardfx-book .team-card.is-flipped .team-card__front{transform:rotateY(-118deg)}
+figure.team-card{margin:0;padding:0}.team-card figcaption{all:unset}
 .team-card__photo{height:var(--team-photo-h,290px);background:var(--ph) center/cover}
 .team-card__photo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:0;margin:0}
 /* eingeklappt: nur Hundeführer-Name + Hundename (kompakt, feste Höhe => gleich hohe Karten) */
 .team-card__caption{padding:.85rem 1.1rem 1rem;text-align:center}
 .team-card__caption strong{display:block;font-family:var(--font-head);font-size:1.12rem;line-height:1.25;color:var(--ink-strong);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.team-card__caption em{font-style:italic;color:var(--muted);font-size:.92rem}.team-card__caption p{margin:0}
 .team-card__dog{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-top:.2rem;min-height:2.6em;font-style:italic;font-size:.9rem;line-height:1.3;color:var(--muted)}
 /* no-JS-Fallback: feste Info-Höhe, Text auf N Zeilen gekürzt ("…") */
 .team-card__info{padding:1rem 1.15rem 1.2rem;font-size:.92rem;line-height:1.55;height:calc(var(--team-clamp,6) * 1.6em + 1.2rem);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:var(--team-clamp,6);overflow:hidden}
@@ -221,6 +220,7 @@ section{padding:clamp(3rem,6vw,5.5rem) clamp(1.2rem,4vw,4rem)}
 /* "Mehr Infos"-Button: erscheint beim Hovern (slide-up) */
 .team-card__more-btn{position:absolute;left:50%;bottom:0;transform:translate(-50%,170%);opacity:0;z-index:3;border:none;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:.82rem;padding:.45rem 1.1rem;box-shadow:var(--shadow-md);white-space:nowrap;cursor:pointer;transition:transform .35s cubic-bezier(.2,.7,.3,1),opacity .3s ease}
 .cardfx-flip .team-card:hover .team-card__more-btn{transform:translate(-50%,-45%);opacity:1}
+.team-card.is-flipped .team-card__more-btn{opacity:0!important;pointer-events:none;transform:translate(-50%,170%)!important}
 .postnav{display:flex;justify-content:space-between;gap:1rem;margin:2.5rem auto;flex-wrap:wrap}
 .postnav a{font-weight:600}
 .subpages{margin-top:2.5rem}
